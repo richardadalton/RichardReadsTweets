@@ -12,6 +12,15 @@ def make_table(tweets):
 
 
 
-tweets = get_tweets_by_search.search('Euro', 10)
-popular = get_most_retweeted.most_retweeted(tweets, 1000)
+def make_table_from_dictionary(tweets):
+    table = PrettyTable(field_names=['Text', 'Retweet Count'])
+    for key in tweets:
+        table.add_row([key, tweets[key]])
+        table.max_width['Text'] = 50
+        table.align['Text'], table.align['Retweet Count'] = 'l', 'r'
+    return table
+
+
+tweets = get_tweets_by_search.search('Trump', 100)
+popular = get_most_retweeted.most_retweeted(tweets, 10)
 print make_table(popular)

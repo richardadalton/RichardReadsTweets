@@ -2,7 +2,7 @@ from tweepy import Stream
 from tweepy.streaming import StreamListener
 from auth import get_auth
 
-keyword_list=['c#', 'Java', 'Python', 'f#']
+keyword_list=['islam', 'catholicism', 'software', 'sugar']
 limit = 500
 
 class MyStreamListener(StreamListener):
@@ -15,7 +15,7 @@ class MyStreamListener(StreamListener):
         if self.num_tweets < limit:
             self.num_tweets += 1
             try:
-                with open('new_tweet_mining.json', 'a') as tweet_file:
+                with open('tweet_mining.json', 'a') as tweet_file:
                     tweet_file.write(data)
                     return True
             except BaseException as e:
